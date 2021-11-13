@@ -32,7 +32,7 @@ public class EmployeServiceImp implements IEmployeService {
 	@Autowired
 	TimesheetRepository timesheetRepository;
 	
-	private static final Logger logger = Logger.getLogger(EmployeServiceImp.class);
+	private static final Logger logger = LogManager.getLogger(EmployeServiceImp.class);
 	public int ajouterEmploye(Employe employe) {
 		try {
 			logger.debug("Process ajout d'un employe");
