@@ -1,11 +1,15 @@
 package tn.esprit.spring;
 
 
+import static org.junit.Assert.*;
 
+import org.apache.log4j.Logger;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 
 
@@ -14,16 +18,12 @@ import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
 import tn.esprit.spring.services.IEntrepriseService;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.util.List;
 
 
 
 @SpringBootTest
-//@RunWith(SpringRunner.class)
+@RunWith(SpringRunner.class)
 public class EntrepriseServiceImplTest {
 	
 	
@@ -39,8 +39,8 @@ public class EntrepriseServiceImplTest {
 		
 		
 		 Entreprise ent=new Entreprise("MitraSociety","mitra");
-		 idEntreprise=entservice.ajouterEntreprise(ent);
-		 assertNotNull(idEntreprise);
+		 int idE=entservice.ajouterEntreprise(ent);
+		 assertNotNull(idE);
 		 
 		
 	}
@@ -58,24 +58,22 @@ public void testGetEtrepriseById(){
 }
 
 
-@Test
-public void testDeleteEntrepriseById(){
+//@Test
+//public void testDeleteEntrepriseById(){
 	
-	if(idEntreprise!=null){
-		int i = entservice.deleteEntrepriseById(idEntreprise);
+//	if(idEntreprise!=null){
+//		int i = entservice.deleteEntrepriseById(idEntreprise);
 		
-		assertEquals(0, i);
-		}
-		else {
-			int i = entservice.deleteEntrepriseById(5);
-			
-			assertEquals(0, i);
-			}
-       
-	
-	
+//		assertEquals(0, i);
+//		}
+//		else {
+//			int i = entservice.deleteEntrepriseById(5);			
+//			assertEquals(0, i);
+//			}
+//}
 
-}
+
+
 @Test
 public void testGetAllDepartementsNamesByEntreprise() {
 	
