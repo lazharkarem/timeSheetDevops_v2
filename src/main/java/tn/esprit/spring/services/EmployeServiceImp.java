@@ -3,11 +3,10 @@ package tn.esprit.spring.services;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 //import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
@@ -32,7 +31,7 @@ public class EmployeServiceImp implements IEmployeService {
 	@Autowired
 	TimesheetRepository timesheetRepository;
 	
-	private static final Logger logger = LogManager.getLogger(EmployeServiceImp.class);
+	private static final Logger logger = Logger.getLogger(EmployeServiceImp.class);
 	public int ajouterEmploye(Employe employe) {
 		try {
 			logger.debug("Process ajout d'un employe");
