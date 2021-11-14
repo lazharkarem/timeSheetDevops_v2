@@ -13,6 +13,7 @@ import tn.esprit.spring.services.EntrepriseServiceImpl;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 
@@ -27,7 +28,9 @@ class DepartementServiceImplTest {
 	int iddep = 0 ;
 
 	
+
   @Test
+
 	public void testAjoutDepartement(){
 		
 		Departement dep=new Departement("Technique");
@@ -37,11 +40,13 @@ class DepartementServiceImplTest {
 	}
 
 
+
   @Test
  public void testAffecterDepartementAEntreprise(){
 	depservice.affecterDepartementAEntreprise(2,1);
 	Departement dep=departementrepository.findById(1).orElse(null);
 	assertEquals(1,1);	
+
 	 
 }
   
@@ -57,6 +62,5 @@ class DepartementServiceImplTest {
  	}
   
 
- 
 
 }
