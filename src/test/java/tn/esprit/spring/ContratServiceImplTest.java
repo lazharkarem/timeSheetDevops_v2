@@ -1,10 +1,5 @@
 package tn.esprit.spring;
 
-
-
-
-
-
 import java.util.Date;
 import java.util.List;
 
