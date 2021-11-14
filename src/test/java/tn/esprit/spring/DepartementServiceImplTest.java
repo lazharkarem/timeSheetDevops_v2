@@ -17,6 +17,7 @@ import tn.esprit.spring.repository.EntrepriseRepository;
 import tn.esprit.spring.services.DepartementServiceImpl;
 import tn.esprit.spring.services.EntrepriseServiceImpl;
 
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -31,42 +32,27 @@ private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Departeme
 	@Autowired DepartementRepository  departementrepository;
 	
 	
-/*	
+	
 @Test
 	public void testAjoutDepartement(){
 		
-		LOGGER.debug("L'ajout d'un département");
-		Departement dep=new Departement("Rh");
+		Departement dep=new Departement("Technique");
+		
 		 int rslt=depservice.ajouterDepartement(dep);
 		assertNotNull(rslt);
-		LOGGER.info("Le département  "+dep.getName()+ "  est ajouté avec succés");
-		//System.out.println("/n");
 	}
 
- */
 
 @Test
-
 public void testAffecterDepartementAEntreprise(){
-	//int id_entreprise=3;
-	//int id_departement=1;
-	depservice.affecterDepartementAEntreprise(1,1);
-	
+	depservice.affecterDepartementAEntreprise(2,1);
+	Departement dep=departementrepository.findById(1).orElse(null);
+	assertEquals(1,dep.getEntreprise().getId());	
 	 
 }
 
-/*
-@Test
-public void testDeleteDepartementById(){
-     int iddep=5;
-     boolean isExistBeforeDelete=departementrepository.findById(iddep).isPresent();
-      entservice.deleteDepartementById(iddep);
-     boolean notExistAfterDelete=departementrepository.findById(iddep).isPresent();
-     assertTrue(isExistBeforeDelete);
-     assertFalse(notExistAfterDelete);
 
-   }  
-*/
+
 
 }
 
