@@ -12,11 +12,14 @@ import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @Service
 public class DepartementServiceImpl implements IDepartementService {
+	Logger logger = LoggerFactory.getLogger(DepartementServiceImpl.class);
+
 
 
 @Autowired
@@ -58,17 +61,60 @@ public void affecterDepartementAEntreprise(int depId, int entrepriseId) {
 
 
 
+
+
+
+public void delete() {
+try {
+	logger.info("delete departement");
+	logger.debug("Je vais supprimer un contrat.");
+	entrepriseRepoistory.deleteAll();
+	logger.debug("delete finish");
+	logger.info("Contract deleted Succefully ! ");			
+}catch(Exception e) {
+	logger.error(e.toString());
+}
+}
+
+
+
+
+
+
+
+
+public List<Departement>  getAllDep() {
+List<Departement> departement = new ArrayList<>();
+
+try {
+	logger.info("getting Departement");
+	logger.debug("Je vais afficher les Departement.");
+	departement = (List<Departement>) deptRepoistory.findAll();
+	logger.debug("Je viens de finir l'opération X.");
+	logger.info("Out getAllDep() without errors.");			
+
+}
+catch (Exception e) { 
+		logger.error(e.toString());
+		}
+
+return departement ;	
+}
+
 @Transactional
 public void deleteDepartementById(int depId) {
-	//l.debug("La suppression d'un département ");
+//l.debug("La suppression d'un département ");
 try{
-	if(deptRepoistory.findById(depId) != null){
-		deptRepoistory.delete(deptRepoistory.findById(depId).orElse(null));
-		//l.debug("La suppression fait avec succes ");
-	}
-}
-	catch(Exception e){
-		//l.error("Erreur"+e);
-	}
+if(deptRepoistory.findById(depId) != null){
+	deptRepoistory.delete(deptRepoistory.findById(depId).orElse(null));
+	//l.debug("La suppression fait avec succes ");
 }
 }
+catch(Exception e){
+	//l.error("Erreur"+e);
+}
+}
+}
+
+
+

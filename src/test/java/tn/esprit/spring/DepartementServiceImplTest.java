@@ -1,73 +1,62 @@
 package tn.esprit.spring;
-import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.slf4j.LoggerFactory;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.spring.entities.Departement;
-import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
 import tn.esprit.spring.services.DepartementServiceImpl;
 import tn.esprit.spring.services.EntrepriseServiceImpl;
+import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-public class DepartementServiceImplTest {
-	
 
-private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(DepartementServiceImplTest.class);
-	
+@SpringBootTest
+class DepartementServiceImplTest {
+
 	@Autowired EntrepriseServiceImpl entservice;
 	@Autowired DepartementServiceImpl depservice;
 	@Autowired EntrepriseRepository  entrepriserepository;
 	@Autowired DepartementRepository  departementrepository;
 	
+	int iddep = 0 ;
+
 	
-/*	
-@Test
+  @Test
 	public void testAjoutDepartement(){
 		
-		LOGGER.debug("L'ajout d'un département");
-		Departement dep=new Departement("Rh");
+		Departement dep=new Departement("Technique");
+		
 		 int rslt=depservice.ajouterDepartement(dep);
 		assertNotNull(rslt);
-		LOGGER.info("Le département  "+dep.getName()+ "  est ajouté avec succés");
-		//System.out.println("/n");
 	}
 
- */
 
-@Test
-
-public void testAffecterDepartementAEntreprise(){
-	//int id_entreprise=3;
-	//int id_departement=1;
-	depservice.affecterDepartementAEntreprise(1,1);
-	
+  @Test
+ public void testAffecterDepartementAEntreprise(){
+	depservice.affecterDepartementAEntreprise(2,1);
+	Departement dep=departementrepository.findById(1).orElse(null);
+	assertEquals(1,1);	
 	 
 }
+  
+  
+  @Test 
+	public void testalldeps() {
+		depservice.getAllDep();
+	}
+  
+  @Test 
+ 	public void deleteAll() {
+ 		depservice.delete();
+ 	}
+  
 
-/*
-@Test
-public void testDeleteDepartementById(){
-     int iddep=5;
-     boolean isExistBeforeDelete=departementrepository.findById(iddep).isPresent();
-      entservice.deleteDepartementById(iddep);
-     boolean notExistAfterDelete=departementrepository.findById(iddep).isPresent();
-     assertTrue(isExistBeforeDelete);
-     assertFalse(notExistAfterDelete);
-
-   }  
-*/
+ 
 
 }
-
-
