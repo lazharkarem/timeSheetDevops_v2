@@ -21,14 +21,14 @@ public class EmployeServiceImpTest {
 	@Test
     public void testAjouterEmploye(){
 
-		 Employe employe= controllerEmploye.ajouterEmploye (new Employe("Yosra1535kkk","Nasri125","yosra.nasri@esprit.tn",true,Role.ADMINISTRATEUR ));
+		 Employe employe= controllerEmploye.ajouterEmploye (new Employe("lazhar","karem","karem.lazhar@gmail.com",true,Role.ADMINISTRATEUR ));
 		 assertNotEquals(employe.getId(),0);
 		 controllerEmploye.deleteEmployeById(employe.getId());
     }
 	@Test
 	public void testGetEmployePrenomById() {
-		Employe employe= controllerEmploye.ajouterEmploye (new Employe("Yossra","Nassri","yossra.nassri@esprit.tn",true,Role.ADMINISTRATEUR ));
-		assertEquals("Nassri",controllerEmploye.getEmployePrenomById(employe.getId()));
+		Employe employe= controllerEmploye.ajouterEmploye (new Employe("lazhar","karem","karem.lazhar@gmail.com",true,Role.ADMINISTRATEUR ));
+		assertEquals("karem",controllerEmploye.getEmployePrenomById(employe.getId()));
 		controllerEmploye.deleteEmployeById(employe.getId());
 	}	
 	
@@ -42,11 +42,11 @@ public class EmployeServiceImpTest {
 	}
 	@Test
 	public void testMettreAjourEmailByEmployeIdJPQL() {
-		controllerEmploye.mettreAjourEmailByEmployeIdJPQL("yosra-nasri@outlook.fr", 1);;
+		controllerEmploye.mettreAjourEmailByEmployeIdJPQL("karem.lazhar@esprit.tn", 1);;
 	}
 	@Test
 	public void testDeleteEmployeById() {
-		Employe employe= controllerEmploye.ajouterEmploye (new Employe("yosra15","yosra","yosra.yosra@esprit.tn",true,Role.ADMINISTRATEUR ));
+		Employe employe= controllerEmploye.ajouterEmploye (new Employe("lazhar","karem","karem.lazhar@gmail.com",true,Role.ADMINISTRATEUR ));
 		assertNotEquals(employe.getId(),0);
 		controllerEmploye.deleteEmployeById(employe.getId());
 		
